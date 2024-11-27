@@ -1,6 +1,6 @@
 import 'package:bookadminapp/firebase_options.dart';
-import 'package:bookadminapp/views/screens/main_screen.dart';
 import 'package:bookadminapp/views/screens/side_bar_screens/Product_Screen.dart'; // Import ProductsScreen
+import 'package:bookadminapp/views/screens/side_bar_screens/dashboard_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MainScreen(),
+      home: const DashboardScreen(),
       // Add routes here
       routes: {
         ProductsScreen.routeName: (context) {

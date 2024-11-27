@@ -5,7 +5,9 @@ import 'package:bookadminapp/models/category.dart';
 import 'package:bookadminapp/services/category_service.dart';
 
 class CategoryScreen extends StatefulWidget {
-  static const String routeName = '\CategoryScreen';
+  static const String routeName = 'CategoryScreen';
+
+  const CategoryScreen({super.key});
 
   @override
   _CategoryScreenState createState() => _CategoryScreenState();
@@ -40,28 +42,28 @@ class _CategoryScreenState extends State<CategoryScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Add Category'),
+        title: const Text('Add Category'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: nameController,
-              decoration: InputDecoration(labelText: 'Name'),
+              decoration: const InputDecoration(labelText: 'Name'),
             ),
             TextField(
               controller: slugController,
-              decoration: InputDecoration(labelText: 'Slug'),
+              decoration: const InputDecoration(labelText: 'Slug'),
             ),
             TextField(
               controller: imageUrlController,
-              decoration: InputDecoration(labelText: 'Image URL'),
+              decoration: const InputDecoration(labelText: 'Image URL'),
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel'),
+            child: const Text('Cancel'),
           ),
           ElevatedButton(
             onPressed: () async {
@@ -85,11 +87,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
               } else {
                 // Nếu không nhập đủ thông tin
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Please fill all fields')),
+                  const SnackBar(content: Text('Please fill all fields')),
                 );
               }
             },
-            child: Text('Add'),
+            child: const Text('Add'),
           ),
         ],
       ),
@@ -105,28 +107,28 @@ class _CategoryScreenState extends State<CategoryScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Edit Category'),
+        title: const Text('Edit Category'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: nameController,
-              decoration: InputDecoration(labelText: 'Name'),
+              decoration: const InputDecoration(labelText: 'Name'),
             ),
             TextField(
               controller: slugController,
-              decoration: InputDecoration(labelText: 'Slug'),
+              decoration: const InputDecoration(labelText: 'Slug'),
             ),
             TextField(
               controller: imageUrlController,
-              decoration: InputDecoration(labelText: 'Image URL'),
+              decoration: const InputDecoration(labelText: 'Image URL'),
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel'),
+            child: const Text('Cancel'),
           ),
           ElevatedButton(
             onPressed: () async {
@@ -147,11 +149,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 imageUrlController.clear();
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Please fill all fields')),
+                  const SnackBar(content: Text('Please fill all fields')),
                 );
               }
             },
-            child: Text('Update'),
+            child: const Text('Update'),
           ),
         ],
       ),
@@ -168,13 +170,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Manage Category',
           style: TextStyle(fontWeight: FontWeight.bold), // In đậm tiêu đề
         ),
       ),
       body: _categories.isEmpty
-          ? Center(
+          ? const Center(
               child: Text(
                   'No categories available')) // Hiển thị khi không có category nào
           : ListView.builder(
@@ -189,22 +191,22 @@ class _CategoryScreenState extends State<CategoryScreen> {
                             height: 50,
                             fit: BoxFit.cover,
                             placeholder: (context, url) =>
-                                CircularProgressIndicator(),
+                                const CircularProgressIndicator(),
                             errorWidget: (context, url, error) =>
-                                Icon(Icons.broken_image),
+                                const Icon(Icons.broken_image),
                           )
-                        : Icon(Icons.broken_image),
+                        : const Icon(Icons.broken_image),
                     title: Text(category.name),
                     subtitle: Text(category.slug),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         IconButton(
-                          icon: Icon(Icons.edit),
+                          icon: const Icon(Icons.edit),
                           onPressed: () => _editCategory(category),
                         ),
                         IconButton(
-                          icon: Icon(Icons.delete),
+                          icon: const Icon(Icons.delete),
                           onPressed: () => _deleteCategory(category.id),
                         ),
                       ],
@@ -224,7 +226,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addCategory,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

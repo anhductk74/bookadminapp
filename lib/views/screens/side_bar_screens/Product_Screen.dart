@@ -8,7 +8,8 @@ class ProductsScreen extends StatefulWidget {
   final String categoryId;
   final String categoryName;
 
-  ProductsScreen({
+  const ProductsScreen({
+    super.key,
     required this.categoryId,
     required this.categoryName,
   });
@@ -42,7 +43,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
     } catch (e) {
       print(e);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to fetch products')),
+        const SnackBar(content: Text('Failed to fetch products')),
       );
     }
   }
@@ -65,7 +66,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
     } catch (e) {
       print(e);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to add product')),
+        const SnackBar(content: Text('Failed to add product')),
       );
     }
   }
@@ -88,7 +89,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
     } catch (e) {
       print(e);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to update product')),
+        const SnackBar(content: Text('Failed to update product')),
       );
     }
   }
@@ -100,7 +101,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
     } catch (e) {
       print(e);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to delete product')),
+        const SnackBar(content: Text('Failed to delete product')),
       );
     }
   }
@@ -129,30 +130,30 @@ class _ProductsScreenState extends State<ProductsScreen> {
           children: [
             TextField(
               controller: nameController,
-              decoration: InputDecoration(labelText: 'Name'),
+              decoration: const InputDecoration(labelText: 'Name'),
             ),
             TextField(
               controller: priceController,
-              decoration: InputDecoration(labelText: 'Price'),
+              decoration: const InputDecoration(labelText: 'Price'),
             ),
             TextField(
               controller: qtyController,
-              decoration: InputDecoration(labelText: 'Quantity'),
+              decoration: const InputDecoration(labelText: 'Quantity'),
             ),
             TextField(
               controller: descriptionController,
-              decoration: InputDecoration(labelText: 'Description'),
+              decoration: const InputDecoration(labelText: 'Description'),
             ),
             TextField(
               controller: imageController,
-              decoration: InputDecoration(labelText: 'Image URL'),
+              decoration: const InputDecoration(labelText: 'Image URL'),
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel'),
+            child: const Text('Cancel'),
           ),
           ElevatedButton(
             onPressed: () async {
@@ -169,7 +170,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 Navigator.pop(context);
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Please fill all fields')),
+                  const SnackBar(content: Text('Please fill all fields')),
                 );
               }
             },
@@ -187,7 +188,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
         title: Text('Products for Category: ${widget.categoryName}'),
       ),
       body: _products.isEmpty
-          ? Center(child: Text('No products available in this category'))
+          ? const Center(child: Text('No products available in this category'))
           : ListView.builder(
               itemCount: _products.length,
               itemBuilder: (context, index) {
@@ -200,7 +201,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                           height: 50,
                           fit: BoxFit.cover,
                         )
-                      : Icon(Icons.broken_image, size: 50),
+                      : const Icon(Icons.broken_image, size: 50),
                   title: Text(product.name),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -214,11 +215,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.edit),
+                        icon: const Icon(Icons.edit),
                         onPressed: () => _showProductDialog(product: product),
                       ),
                       IconButton(
-                        icon: Icon(Icons.delete),
+                        icon: const Icon(Icons.delete),
                         onPressed: () => _deleteProduct(product.id),
                       ),
                     ],
@@ -228,7 +229,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showProductDialog(),
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

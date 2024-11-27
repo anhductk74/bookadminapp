@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class User {
   final String id;
   final String name;
@@ -13,4 +15,6 @@ class User {
       email: firestoreData['email'] ?? 'N/A',
     );
   }
+
+  // Hàm tĩnh để lấy thông tin người dùng từ Firestore theo id
 }
